@@ -32,5 +32,5 @@ jobs:
 
       - name: Levantar contenedor
         run: |
-          docker rm -f daw-web-container || exit 0
+          docker rm -f daw-web-container 2>$null
           docker run -d -p 8888:80 --name daw-web-container ${{ vars.DOCKERHUB_USERNAME }}/daw-web:latest
