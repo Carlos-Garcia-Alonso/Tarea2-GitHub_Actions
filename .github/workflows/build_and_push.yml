@@ -32,5 +32,6 @@ jobs:
 
       - name: Levantar contenedor
         run: |
-          docker rm -f daw-web-container 2>$null
+          docker rm -f daw-web-container 
+          if ($LASTEXITCODE -ne 0) { Write-Host "Contenedor no existía, continuamos..." }
           docker run -d -p 8888:80 --name daw-web-container ${{ vars.DOCKERHUB_USERNAME }}/daw-web:latest
